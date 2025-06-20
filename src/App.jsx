@@ -53,45 +53,28 @@ export default function App() {
     setStatus('playing');
   };
 
-  const cell = {
-    width: '5rem',
-    height: '5rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    borderRadius: 6,
-  };
+  const cell =
+    'w-20 h-20 flex items-center justify-center text-xl font-bold rounded';
 
   return (
-    <main style={{
-      minHeight: '100vh',          // full-height viewport
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',    // vertical center
-      alignItems: 'center',        // horizontal center
-      padding: 24,
-      fontFamily: 'sans-serif',
-      position: 'relative',
-    }}>
-      <h1 style={{ marginBottom: 4 }}>2048</h1>
-      <p style={{ marginTop: 0, color: '#666' }}>Score: {score}</p>
+    <main
+      className="min-h-screen flex flex-col justify-center items-center p-6 font-sans relative"
+    >
+      <h1 className="mb-1">2048</h1>
+      <p className="mt-0 text-gray-600">Score: {score}</p>
 
       <div
+        className="grid gap-2 mb-3"
         style={{
-          display: 'grid',
           gridTemplateColumns: `repeat(${SIZE}, 5rem)`,
-          gap: '0.5rem',
-          marginBottom: 12,
           filter: status === 'playing' ? 'none' : 'blur(2px)',
         }}
       >
         {board.map((v, i) => (
           <div
             key={i}
+            className={cell}
             style={{
-              ...cell,
               color: v ? '#776e65' : 'transparent',
               backgroundColor: v ? '#eee4da' : '#cdc1b4',
             }}
@@ -101,24 +84,25 @@ export default function App() {
         ))}
       </div>
 
-      <button onClick={reset}>New Game</button>
+      <button
+        onClick={reset}
+        className="bg-gray-800 text-white py-2 px-4 rounded"
+      >
+        New Game
+      </button>
 
       {status !== 'playing' && (
         <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'rgba(238,228,218,0.9)',
-            gap: 12,
-          }}
+          className="absolute inset-0 flex flex-col items-center justify-center bg-[rgba(238,228,218,0.9)] gap-3"
         >
           <h2>{status === 'won' ? '🎉 You win!' : 'Game over'}</h2>
           <h2>Score: {score}</h2>
-          <button onClick={reset}>Play again</button>
+          <button
+            onClick={reset}
+            className="bg-gray-800 text-white py-2 px-4 rounded"
+          >
+            Play again
+          </button>
         </div>
       )}
     </main>
