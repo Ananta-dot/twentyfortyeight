@@ -72,13 +72,13 @@ export default function App() {
 
   return (
     <main
-      className="min-h-screen flex flex-col justify-center items-center p-6 font-sans bg-gray-100 relative"
+      className="min-h-screen flex flex-col justify-center items-center p-6 font-sans bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative"
     >
       <h1 className="mb-1">2048</h1>
-      <p className="mt-0 text-gray-600">Score: {score}</p>
+      <p className="mt-0 text-gray-600 dark:text-gray-400">Score: {score}</p>
 
       <div
-        className={`grid gap-2 mb-3 bg-[#bbada0] p-2 rounded ${
+        className={`grid gap-2 mb-3 bg-[#bbada0] dark:bg-[#8f7a66] p-2 rounded ${
           status !== 'playing' ? 'blur-sm' : ''
         }`}
         style={{ gridTemplateColumns: `repeat(${SIZE}, 5rem)` }}
@@ -95,20 +95,20 @@ export default function App() {
 
       <button
         onClick={reset}
-        className="bg-gray-800 text-white py-2 px-4 rounded"
+        className="bg-gray-800 dark:bg-gray-700 text-white py-2 px-4 rounded"
       >
         New Game
       </button>
 
       {status !== 'playing' && (
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center bg-[rgba(238,228,218,0.9)] gap-3 text-center"
+          className="absolute inset-0 flex flex-col items-center justify-center bg-[rgba(238,228,218,0.9)] dark:bg-[rgba(34,34,34,0.9)] gap-3 text-center"
         >
           <h2>{status === 'won' ? '🎉 You win!' : 'Game over'}</h2>
           <h2>Score: {score}</h2>
           <button
             onClick={reset}
-            className="bg-gray-800 text-white py-2 px-4 rounded"
+            className="bg-gray-800 dark:bg-gray-700 text-white py-2 px-4 rounded"
           >
             Play again
           </button>
